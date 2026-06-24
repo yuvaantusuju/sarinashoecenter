@@ -10,7 +10,7 @@ import { brands } from "@/db/schema";
 import { generateId } from "@/lib/utils";
 
 export const revalidate = 0;
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export async function GET() {
   try {

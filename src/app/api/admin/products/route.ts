@@ -9,7 +9,7 @@ import { getDb } from "@/db";
 import { products } from "@/db/schema";
 import { generateId } from "@/lib/utils";
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export const revalidate = 0;
 

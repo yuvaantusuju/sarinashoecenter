@@ -9,7 +9,7 @@ import { getDb } from "@/db";
 import { products, brands } from "@/db/schema";
 import { ProductListingClient } from "./ProductListingClient";
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 export const revalidate = 0; // Disable caching to fetch fresh DB rows
 
 interface SearchParams {
