@@ -9,8 +9,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "sarina-shoe-db",
-      "database_id": "YOUR_D1_DATABASE_ID_HERE"
+      "database_name": "sarina",
+      "database_id": "633be768-59d4-4147-b214-35a10c65ae09"
     }
   ]
 }
