@@ -8,6 +8,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { createSessionToken, AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from "@/lib/auth";
 
+export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();

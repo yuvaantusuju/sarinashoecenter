@@ -10,6 +10,8 @@ import { getDb } from "@/db";
 import { orders, products } from "@/db/schema";
 import { generateId, safeJsonParse } from "@/lib/utils";
 
+export const runtime = 'edge';
+
 export const revalidate = 0;
 
 export async function POST(req: NextRequest) {

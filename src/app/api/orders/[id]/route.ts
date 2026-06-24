@@ -8,6 +8,8 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/db";
 import { orders } from "@/db/schema";
 
+export const runtime = 'edge';
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

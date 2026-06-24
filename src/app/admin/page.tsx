@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+export const runtime = 'edge';
 export const revalidate = 0;
 
 export default async function AdminDashboardPage() {

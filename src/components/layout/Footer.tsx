@@ -61,15 +61,15 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2 text-sm text-black-400">
                 <Phone className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                <span>+91 99999 99999</span>
+                <span>+977 9842056985</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-black-400">
                 <Mail className="h-4 w-4 text-orange-500 flex-shrink-0" />
-                <span>hello@sarinashoes.com</span>
+                <span>ramtusuju@gmail.com</span>
               </div>
               <div className="flex items-start gap-2 text-sm text-black-400">
                 <MapPin className="h-4 w-4 text-orange-500 flex-shrink-0 mt-0.5" />
-                <span>123 Shoe Street, Fashion District, Mumbai 400001</span>
+                <span> M76F+RGW, Paris Toll, Itahari 56705</span>
               </div>
             </div>
           </div>

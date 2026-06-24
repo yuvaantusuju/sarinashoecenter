@@ -20,7 +20,6 @@ export default function AdminBrandsPage() {
   const [brandsList, setBrandsList] = useState<Brand[]>([]);
   const [name, setName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
-  
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -66,7 +65,6 @@ export default function AdminBrandsPage() {
 
       // Prepend brand to list
       setBrandsList((prev) => [data.brand, ...prev]);
-      
       // Reset inputs
       setName("");
       setLogoUrl("");
@@ -123,7 +121,6 @@ export default function AdminBrandsPage() {
         {/* Create Brand Card */}
         <div className="bg-white border border-black-100 rounded-2xl shadow-sm p-6 space-y-4">
           <h2 className="text-lg font-bold text-black-900">Add Brand</h2>
-          
           <form onSubmit={handleCreate} className="space-y-4">
             <div className="space-y-1.5">
               <label htmlFor="orange-name" className="text-xs font-semibold text-black-700">

@@ -12,6 +12,7 @@ import { getDb } from "@/db";
 import { products, brands } from "@/db/schema";
 import { ProductDetailClient } from "./ProductDetailClient";
 
+export const runtime = 'edge';
 export const revalidate = 0; // Disable caching
 
 interface PageProps {
