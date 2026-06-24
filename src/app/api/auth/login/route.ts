@@ -10,6 +10,7 @@ import { getDb } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import {
+  hashPassword,
   verifyPassword,
   createSessionToken,
   AUTH_COOKIE_NAME,
@@ -38,6 +39,30 @@ export async function POST(req: NextRequest) {
     }
 
     const db = getDb((env as any).DB);
+
+    // Auto-seed default admin user if they don't exist yet
+    const adminEmail = "admin@sarinashoes.com";
+    const adminFound = await db
+      .select()
+      .from(users)
+      .where(eq(users.email, adminEmail))
+      .limit(1);
+
+    if (adminFound.length === 0) {
+      try {
+        const adminHash = await hashPassword("admin123");
+        await db.insert(users).values({
+          id: crypto.randomUUID(),
+          name: "Admin",
+          email: adminEmail,
+          passwordHash: adminHash,
+          role: "admin",
+          createdAt: Math.floor(Date.now() / 1000),
+        });
+      } catch (seedErr) {
+        console.error("Auto-seeding admin user failed:", seedErr);
+      }
+    }
 
     // Find user by email
     const found = await db
