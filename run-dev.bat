@@ -30,6 +30,6 @@ echo.
 
 echo [2/2] Starting Next.js local development server...
 echo.
-call npm run dev
+call npm run preview
 
 pause
