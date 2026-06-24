@@ -1,9 +1,11 @@
 /**
  * ClientLayout — Client-side wrapper that provides:
+ * - AuthProvider context (user authentication)
  * - CartProvider context
  * - Header with cart drawer toggle
  * - CartDrawer (slide-out)
  * - CheckoutModal
+ * - AuthModal (login/register)
  * - Footer (hidden on admin routes)
  *
  * This is separated from the root layout because it uses "use client".
@@ -13,11 +15,13 @@
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CheckoutModal } from "@/components/cart/CheckoutModal";
+import { AuthModal } from "@/components/layout/AuthModal";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -35,32 +39,41 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
 
   // On admin routes, render children without storefront chrome
   if (isAdmin) {
-    return <CartProvider>{children}</CartProvider>;
+    return (
+      <AuthProvider>
+        <CartProvider>{children}</CartProvider>
+      </AuthProvider>
+    );
   }
 
   return (
-    <CartProvider>
-      <div className="flex min-h-screen flex-col">
-        <Header onCartOpen={() => setCartOpen(true)} />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </div>
+    <AuthProvider>
+      <CartProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header onCartOpen={() => setCartOpen(true)} />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
 
-      {/* Cart Drawer */}
-      <CartDrawer
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        onCheckout={() => {
-          setCartOpen(false);
-          setCheckoutOpen(true);
-        }}
-      />
+        {/* Cart Drawer */}
+        <CartDrawer
+          isOpen={cartOpen}
+          onClose={() => setCartOpen(false)}
+          onCheckout={() => {
+            setCartOpen(false);
+            setCheckoutOpen(true);
+          }}
+        />
 
-      {/* Checkout Modal */}
-      <CheckoutModal
-        isOpen={checkoutOpen}
-        onClose={() => setCheckoutOpen(false)}
-      />
-    </CartProvider>
+        {/* Checkout Modal */}
+        <CheckoutModal
+          isOpen={checkoutOpen}
+          onClose={() => setCheckoutOpen(false)}
+        />
+
+        {/* Auth Modal (Login / Register) */}
+        <AuthModal />
+      </CartProvider>
+    </AuthProvider>
   );
 }

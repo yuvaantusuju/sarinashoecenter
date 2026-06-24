@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
             <Input
               id="login-email"
               type="email"
-              placeholder="admin@sarinashoes.com"
+              placeholder="Enter your email"
               className="pl-10 h-11 bg-black-50/50 border-black-200 focus:border-orange-500"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

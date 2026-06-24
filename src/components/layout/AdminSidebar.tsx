@@ -48,10 +48,9 @@ export function AdminSidebar() {
 
   const handleLogout = async () => {
     try {
-      // We can clear auth state by calling a login endpoint or clearing a cookie
-      // For simplicity, let's call a logout endpoint or just wipe the session cookie on server
+      // Clear session cookie via the logout endpoint
       await fetch("/api/auth/login", { method: "DELETE" });
-      router.push("/admin/login");
+      router.push("/");
       router.refresh();
     } catch (err) {
       console.error("Logout failed:", err);

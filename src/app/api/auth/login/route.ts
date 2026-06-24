@@ -1,43 +1,86 @@
 /**
- * POST /api/auth/login — Admin authentication endpoint.
- * Sets a secure, HTTP-only session cookie upon successful validation.
+ * POST /api/auth/login — User authentication endpoint.
+ * Validates credentials against the users table and sets session cookie.
  * DELETE /api/auth/login — Clears the session cookie (logout).
  */
 
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { createSessionToken, AUTH_COOKIE_NAME, AUTH_COOKIE_MAX_AGE } from "@/lib/auth";
+import { getDb } from "@/db";
+import { users } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import {
+  verifyPassword,
+  createSessionToken,
+  AUTH_COOKIE_NAME,
+  AUTH_COOKIE_MAX_AGE,
+} from "@/lib/auth";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
-    const { env } = getCloudflareContext();
-    
-    // Read credentials from env, falling back to local defaults for developer convenience
-    const adminEmail = (env as any)?.ADMIN_EMAIL || "admin@sarinashoes.com";
-    const adminPassword = (env as any)?.ADMIN_PASSWORD || "admin123";
-    const sessionSecret = (env as any)?.SESSION_SECRET || "sarina-default-session-secret-key-123456";
-
-    if (email !== adminEmail || password !== adminPassword) {
+    if (!email || !password) {
       return NextResponse.json(
-        { error: "Invalid email or password" },
+        { error: "Email and password are required." },
+        { status: 400 }
+      );
+    }
+
+    const { env } = getCloudflareContext();
+    if (!(env as any)?.DB) {
+      return NextResponse.json(
+        { error: "Database not available." },
+        { status: 503 }
+      );
+    }
+
+    const db = getDb((env as any).DB);
+
+    // Find user by email
+    const found = await db
+      .select()
+      .from(users)
+      .where(eq(users.email, email.toLowerCase().trim()))
+      .limit(1);
+
+    if (found.length === 0) {
+      return NextResponse.json(
+        { error: "Invalid email or password." },
         { status: 401 }
       );
     }
 
-    // Generate signed session token
-    const token = await createSessionToken(sessionSecret);
+    const user = found[0];
 
-    // Create Set-Cookie header
-    const response = NextResponse.json({ success: true, message: "Logged in successfully" });
-    
-    // Cookie flags: HttpOnly, Secure (unless localhost), SameSite=Lax, Max-Age
-    const isLocalhost = req.nextUrl.hostname === "localhost" || req.nextUrl.hostname === "127.0.0.1";
+    // Verify password
+    const isPasswordValid = await verifyPassword(password, user.passwordHash);
+    if (!isPasswordValid) {
+      return NextResponse.json(
+        { error: "Invalid email or password." },
+        { status: 401 }
+      );
+    }
+
+    // Generate signed session token with user's role
+    const sessionSecret =
+      (env as any)?.SESSION_SECRET ||
+      "sarina-default-session-secret-key-123456";
+    const token = await createSessionToken(sessionSecret, user.id, user.role);
+
+    const response = NextResponse.json({
+      success: true,
+      message: "Logged in successfully.",
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
+    });
+
+    const isLocalhost =
+      req.nextUrl.hostname === "localhost" ||
+      req.nextUrl.hostname === "127.0.0.1";
     const secureFlag = isLocalhost ? "" : "Secure;";
-    
+
     response.headers.set(
       "Set-Cookie",
       `${AUTH_COOKIE_NAME}=${token}; Path=/; HttpOnly; ${secureFlag} SameSite=Lax; Max-Age=${AUTH_COOKIE_MAX_AGE}`
@@ -45,6 +88,7 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error) {
+    console.error("Login error:", error);
     return NextResponse.json(
       { error: "Authentication failed. Server error." },
       { status: 500 }
@@ -53,10 +97,15 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const response = NextResponse.json({ success: true, message: "Logged out successfully" });
-  
+  const response = NextResponse.json({
+    success: true,
+    message: "Logged out successfully.",
+  });
+
   // Expire the cookie immediately
-  const isLocalhost = req.nextUrl.hostname === "localhost" || req.nextUrl.hostname === "127.0.0.1";
+  const isLocalhost =
+    req.nextUrl.hostname === "localhost" ||
+    req.nextUrl.hostname === "127.0.0.1";
   const secureFlag = isLocalhost ? "" : "Secure;";
 
   response.headers.set(

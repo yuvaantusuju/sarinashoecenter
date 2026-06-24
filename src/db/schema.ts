@@ -28,7 +28,30 @@ export const brands = sqliteTable("brands", {
 });
 
 // ---------------------------------------------------------------------------
-// 2. PRODUCTS — Product catalog with embedded JSON variant data
+// 2. USERS — Registered user accounts (customers + admins)
+// ---------------------------------------------------------------------------
+export const users = sqliteTable("users", {
+  /** Unique user identifier (UUID string) */
+  id: text("id").primaryKey(),
+
+  /** User's display name */
+  name: text("name").notNull(),
+
+  /** Email address (unique, used for login) */
+  email: text("email").notNull().unique(),
+
+  /** PBKDF2-hashed password (base64 encoded "salt:hash") */
+  passwordHash: text("password_hash").notNull(),
+
+  /** User role: "user" (regular customer) or "admin" */
+  role: text("role").notNull().default("user"),
+
+  /** Unix timestamp (seconds) when the user registered */
+  createdAt: integer("created_at").notNull(),
+});
+
+// ---------------------------------------------------------------------------
+// 3. PRODUCTS — Product catalog with embedded JSON variant data
 // ---------------------------------------------------------------------------
 export const products = sqliteTable("products", {
   /** Unique product identifier (UUID string) */
@@ -110,6 +133,9 @@ export const orders = sqliteTable("orders", {
 // ---------------------------------------------------------------------------
 export type Brand = typeof brands.$inferSelect;
 export type NewBrand = typeof brands.$inferInsert;
+
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
 
 export type Product = typeof products.$inferSelect;
 export type NewProduct = typeof products.$inferInsert;
