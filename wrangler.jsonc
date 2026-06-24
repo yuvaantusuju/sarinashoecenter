@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sarinashoe",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Cloudflare D1 database binding
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sarina-shoe-db",
+      "database_id": "YOUR_D1_DATABASE_ID_HERE"
+    }
+  ]
+}
