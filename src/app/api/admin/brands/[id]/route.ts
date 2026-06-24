@@ -11,10 +11,10 @@ import { brands } from "@/db/schema";
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const { name, logoUrl } = await req.json();
 
     if (!name?.trim()) {
@@ -46,10 +46,10 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const { env } = getCloudflareContext();
 
     if (!env?.DB) {
