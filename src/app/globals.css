@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── Google Fonts Import ──────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
+/* The rest of your 116 lines go here... */
 /* ── CSS Custom Properties (Design Tokens) ────────────────────────────── */
 :root {
   --background: 0 0% 0%;
