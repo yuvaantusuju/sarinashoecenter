@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
-    "db:migrate:local": "wrangler d1 migrations apply sarina-shoe-db --local",
-    "db:migrate:prod": "wrangler d1 migrations apply sarina-shoe-db --remote",
+    "db:migrate:local": "wrangler d1 migrations apply sarina --local",
+    "db:migrate:prod": "wrangler d1 migrations apply sarina --remote",
     "db:studio": "drizzle-kit studio",
     "deploy": "opennextjs-cloudflare && wrangler deploy",
     "preview": "opennextjs-cloudflare && wrangler dev"

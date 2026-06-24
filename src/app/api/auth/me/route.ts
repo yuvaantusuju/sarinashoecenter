@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
     if (!(env as any)?.DB) {
       // Fallback: return basic info from token if DB unavailable
       return NextResponse.json({
-        user: { id: payload.userId, name: "User", email: "", role: payload.role },
+        user: { id: payload.userId, name: "User", email: "", phone: "", role: payload.role },
       });
     }
 
@@ -41,6 +41,7 @@ export async function GET(req: NextRequest) {
         id: users.id,
         name: users.name,
         email: users.email,
+        phone: users.phone,
         role: users.role,
       })
       .from(users)

@@ -40,6 +40,9 @@ export const users = sqliteTable("users", {
   /** Email address (unique, used for login) */
   email: text("email").notNull().unique(),
 
+  /** Phone number (unique, prefixed with +977) */
+  phone: text("phone").notNull().unique(),
+
   /** PBKDF2-hashed password (base64 encoded "salt:hash") */
   passwordHash: text("password_hash").notNull(),
 

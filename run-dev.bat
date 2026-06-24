@@ -19,7 +19,7 @@ if not exist node_modules (
 )
 
 echo [1/2] Applying local Cloudflare D1 database migrations...
-call npx wrangler d1 migrations apply sarina-shoe-db --local
+call npx wrangler d1 migrations apply sarina --local
 if %ERRORLEVEL% NEQ 0 (
     echo.
     echo [WARNING] D1 Migrations could not be applied automatically.

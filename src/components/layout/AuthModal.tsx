@@ -6,7 +6,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, Mail, KeyRound, User, Loader2, Footprints, Eye, EyeOff } from "lucide-react";
+import { X, Mail, Phone, KeyRound, User, Loader2, Footprints, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
@@ -22,12 +22,13 @@ export function AuthModal() {
   const [showPassword, setShowPassword] = useState(false);
 
   // Login fields
-  const [loginEmail, setLoginEmail] = useState("");
+  const [loginIdentifier, setLoginIdentifier] = useState(""); // email or phone number
   const [loginPassword, setLoginPassword] = useState("");
 
   // Register fields
   const [regName, setRegName] = useState("");
   const [regEmail, setRegEmail] = useState("");
+  const [regPhone, setRegPhone] = useState("");
   const [regPassword, setRegPassword] = useState("");
 
   // Reset on open/close
@@ -47,20 +48,20 @@ export function AuthModal() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!loginEmail || !loginPassword) {
+    if (!loginIdentifier || !loginPassword) {
       setError("Please fill in all fields.");
       return;
     }
     setLoading(true);
     setError("");
 
-    const result = await login(loginEmail, loginPassword);
+    const result = await login(loginIdentifier, loginPassword);
 
     if (!result.success) {
       setError(result.error || "Login failed.");
     } else {
       // Clear form
-      setLoginEmail("");
+      setLoginIdentifier("");
       setLoginPassword("");
     }
     setLoading(false);
@@ -68,7 +69,7 @@ export function AuthModal() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!regName || !regEmail || !regPassword) {
+    if (!regName || !regEmail || !regPhone || !regPassword) {
       setError("Please fill in all fields.");
       return;
     }
@@ -79,7 +80,7 @@ export function AuthModal() {
     setLoading(true);
     setError("");
 
-    const result = await register(regName, regEmail, regPassword);
+    const result = await register(regName, regEmail, regPhone, regPassword);
 
     if (!result.success) {
       setError(result.error || "Registration failed.");
@@ -87,6 +88,7 @@ export function AuthModal() {
       // Clear form
       setRegName("");
       setRegEmail("");
+      setRegPhone("");
       setRegPassword("");
     }
     setLoading(false);
@@ -163,18 +165,18 @@ export function AuthModal() {
           {activeTab === "login" && (
             <form onSubmit={handleLogin} className="px-8 pb-8 space-y-4">
               <div className="space-y-1.5">
-                <label htmlFor="auth-login-email" className="text-xs font-semibold text-black-700">
-                  Email Address
+                <label htmlFor="auth-login-identifier" className="text-xs font-semibold text-black-700">
+                  Email or Phone Number (+977)
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black-400" />
                   <Input
-                    id="auth-login-email"
-                    type="email"
-                    placeholder="Enter your email"
+                    id="auth-login-identifier"
+                    type="text"
+                    placeholder="Enter email or phone number"
                     className="pl-10 h-11 bg-black-50/50 border-black-200 focus:border-orange-500"
-                    value={loginEmail}
-                    onChange={(e) => setLoginEmail(e.target.value)}
+                    value={loginIdentifier}
+                    onChange={(e) => setLoginIdentifier(e.target.value)}
                     required
                   />
                 </div>
@@ -272,6 +274,25 @@ export function AuthModal() {
                     required
                   />
                 </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="auth-reg-phone" className="text-xs font-semibold text-black-700">
+                  Phone Number (Nepal +977 only)
+                </label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black-400" />
+                  <Input
+                    id="auth-reg-phone"
+                    type="tel"
+                    placeholder="e.g. 98xxxxxxxx or +97798xxxxxxxx"
+                    className="pl-10 h-11 bg-black-50/50 border-black-200 focus:border-orange-500"
+                    value={regPhone}
+                    onChange={(e) => setRegPhone(e.target.value)}
+                    required
+                  />
+                </div>
+                <p className="text-[10px] text-black-400">Must start with +977 or be a 10-digit number starting with 9</p>
               </div>
 
               <div className="space-y-1.5">

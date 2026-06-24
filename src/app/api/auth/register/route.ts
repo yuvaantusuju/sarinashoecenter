@@ -19,12 +19,12 @@ export const runtime = "edge";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, email, phone, password } = await req.json();
 
     // Validate input
-    if (!name || !email || !password) {
+    if (!name || !email || !phone || !password) {
       return NextResponse.json(
-        { error: "Name, email, and password are required." },
+        { error: "Name, email, phone number, and password are required." },
         { status: 400 }
       );
     }
@@ -44,6 +44,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    let formattedPhone = phone.trim();
+    // Auto-prepend +977 if it's a 10-digit number starting with 9
+    if (/^9\d{9}$/.test(formattedPhone)) {
+      formattedPhone = "+977" + formattedPhone;
+    }
+
+    // Validate Nepalese mobile format (+977 followed by 10 digits starting with 9)
+    if (!/^\+9779\d{9}$/.test(formattedPhone)) {
+      return NextResponse.json(
+        { error: "Phone number must be a valid Nepalese number (e.g. +97798xxxxxxxx or 98xxxxxxxx)." },
+        { status: 400 }
+      );
+    }
+
     const { env } = getCloudflareContext();
     if (!(env as any)?.DB) {
       return NextResponse.json(
@@ -55,15 +69,29 @@ export async function POST(req: NextRequest) {
     const db = getDb((env as any).DB);
 
     // Check if email already exists
-    const existing = await db
+    const existingEmail = await db
       .select()
       .from(users)
       .where(eq(users.email, email.toLowerCase().trim()))
       .limit(1);
 
-    if (existing.length > 0) {
+    if (existingEmail.length > 0) {
       return NextResponse.json(
         { error: "An account with this email already exists." },
+        { status: 409 }
+      );
+    }
+
+    // Check if phone already exists
+    const existingPhone = await db
+      .select()
+      .from(users)
+      .where(eq(users.phone, formattedPhone))
+      .limit(1);
+
+    if (existingPhone.length > 0) {
+      return NextResponse.json(
+        { error: "An account with this phone number already exists." },
         { status: 409 }
       );
     }
@@ -76,6 +104,7 @@ export async function POST(req: NextRequest) {
       id: userId,
       name: name.trim(),
       email: email.toLowerCase().trim(),
+      phone: formattedPhone,
       passwordHash: passwordHashed,
       role: "user",
       createdAt: Math.floor(Date.now() / 1000),
@@ -90,7 +119,13 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json({
       success: true,
       message: "Account created successfully.",
-      user: { id: userId, name: name.trim(), email: email.toLowerCase().trim(), role: "user" },
+      user: {
+        id: userId,
+        name: name.trim(),
+        email: email.toLowerCase().trim(),
+        phone: formattedPhone,
+        role: "user",
+      },
     });
 
     const isLocalhost =

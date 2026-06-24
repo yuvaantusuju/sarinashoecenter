@@ -21,11 +21,12 @@ export const runtime = "edge";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password } = await req.json();
+    const { email, emailOrPhone, password } = await req.json();
+    const identifier = (emailOrPhone || email || "").trim();
 
-    if (!email || !password) {
+    if (!identifier || !password) {
       return NextResponse.json(
-        { error: "Email and password are required." },
+        { error: "Email/Phone number and password are required." },
         { status: 400 }
       );
     }
@@ -55,6 +56,7 @@ export async function POST(req: NextRequest) {
           id: crypto.randomUUID(),
           name: "Admin",
           email: adminEmail,
+          phone: "+9779800000000",
           passwordHash: adminHash,
           role: "admin",
           createdAt: Math.floor(Date.now() / 1000),
@@ -64,27 +66,44 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Find user by email
-    const found = await db
-      .select()
-      .from(users)
-      .where(eq(users.email, email.toLowerCase().trim()))
-      .limit(1);
+    // Determine if identifier is an email or phone number
+    let user = null;
+    if (identifier.includes("@")) {
+      const found = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, identifier.toLowerCase()))
+        .limit(1);
+      if (found.length > 0) {
+        user = found[0];
+      }
+    } else {
+      let phoneNum = identifier;
+      if (/^9\d{9}$/.test(phoneNum)) {
+        phoneNum = "+977" + phoneNum;
+      }
+      const found = await db
+        .select()
+        .from(users)
+        .where(eq(users.phone, phoneNum))
+        .limit(1);
+      if (found.length > 0) {
+        user = found[0];
+      }
+    }
 
-    if (found.length === 0) {
+    if (!user) {
       return NextResponse.json(
-        { error: "Invalid email or password." },
+        { error: "Invalid email/phone number or password." },
         { status: 401 }
       );
     }
-
-    const user = found[0];
 
     // Verify password
     const isPasswordValid = await verifyPassword(password, user.passwordHash);
     if (!isPasswordValid) {
       return NextResponse.json(
-        { error: "Invalid email or password." },
+        { error: "Invalid email/phone number or password." },
         { status: 401 }
       );
     }
@@ -98,7 +117,7 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json({
       success: true,
       message: "Logged in successfully.",
-      user: { id: user.id, name: user.name, email: user.email, role: user.role },
+      user: { id: user.id, name: user.name, email: user.email, phone: user.phone, role: user.role },
     });
 
     const isLocalhost =
