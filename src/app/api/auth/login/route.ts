@@ -131,10 +131,10 @@ export async function POST(req: NextRequest) {
     );
 
     return response;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Login error:", error);
     return NextResponse.json(
-      { error: "Authentication failed. Server error." },
+      { error: `Authentication failed: ${error?.message || error || "Unknown error"}` },
       { status: 500 }
     );
   }

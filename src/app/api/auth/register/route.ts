@@ -139,10 +139,10 @@ export async function POST(req: NextRequest) {
     );
 
     return response;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Registration error:", error);
     return NextResponse.json(
-      { error: "Registration failed. Please try again." },
+      { error: `Registration failed: ${error?.message || error || "Unknown error"}` },
       { status: 500 }
     );
   }
