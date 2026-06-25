@@ -67,7 +67,7 @@ const DEMO_PRODUCTS = [
 
 export async function GET() {
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       // Return demo products if D1 is not bound
@@ -110,7 +110,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Price must be a valid number of paise" }, { status: 400 });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     const newProductId = `prod-${generateId().slice(0, 8)}`;
 
     // Prepare JSON fields safely (stringified arrays/objects)

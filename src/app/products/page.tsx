@@ -27,7 +27,7 @@ export default async function ProductsPage({
   let dbBrands: any[] = [];
 
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     if (env?.DB) {
       const db = getDb(env.DB);
       dbProducts = await db.select().from(products);

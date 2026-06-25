@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ user: null });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     if (!(env as any)?.DB) {
       // Fallback: return basic info from token if DB unavailable
       return NextResponse.json({

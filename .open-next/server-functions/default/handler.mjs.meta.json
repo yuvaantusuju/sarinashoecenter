@@ -3658,43 +3658,8 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route_client-reference-manifest.js": {
-      "bytes": 328,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route_client-reference-manifest.js": {
-      "bytes": 326,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/products/route_client-reference-manifest.js": {
-      "bytes": 323,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/brands/route_client-reference-manifest.js": {
-      "bytes": 321,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route_client-reference-manifest.js": {
-      "bytes": 320,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/auth/login/route_client-reference-manifest.js": {
-      "bytes": 319,
-      "imports": [],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/orders/route_client-reference-manifest.js": {
-      "bytes": 315,
-      "imports": [],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-      "bytes": 92075,
+      "bytes": 95435,
       "imports": [
         {
           "path": "path",
@@ -3715,41 +3680,6 @@
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/deep-freeze.js",
           "kind": "require-call",
           "original": "../shared/lib/deep-freeze"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\products\\[id]\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\brands\\[id]\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/products/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\products\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/brands/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\brands\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\orders\\[id]\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/auth/login/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\auth\\login\\route_client-reference-manifest.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/orders/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\orders\\route_client-reference-manifest.js"
         }
       ],
       "format": "cjs"
@@ -3758,113 +3688,6 @@
       "bytes": 42,
       "imports": [],
       "format": "esm"
-    },
-    ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js": {
-      "bytes": 34642,
-      "imports": [
-        {
-          "path": "worker_threads",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": ".open-next/cloudflare-templates/shims/throw.js",
-          "kind": "dynamic-import",
-          "original": "next/dist/compiled/@vercel/og/index.edge.js"
-        },
-        {
-          "path": "path",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "fs",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "stream",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "url",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "<runtime>",
-          "kind": "import-statement",
-          "external": true
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route.js": {
-      "bytes": 395,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route.js": {
-      "bytes": 393,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/products/route.js": {
-      "bytes": 382,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/admin/brands/route.js": {
-      "bytes": 380,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route.js": {
-      "bytes": 378,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/api/auth/login/route.js": {
-      "bytes": 341,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js": {
       "bytes": 34652,
@@ -3929,17 +3752,6 @@
       ],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/products/[id]/page.js": {
-      "bytes": 988,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../chunks/ssr/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/.next/server/app/admin/brands/page.js": {
       "bytes": 971,
       "imports": [
@@ -3973,41 +3785,8 @@
       ],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/api/orders/route.js": {
-      "bytes": 365,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../../chunks/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/.next/server/app/_not-found/page.js": {
       "bytes": 803,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../chunks/ssr/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/products/page.js": {
-      "bytes": 936,
-      "imports": [
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js",
-          "kind": "require-call",
-          "original": "../../chunks/ssr/[turbopack]_runtime.js"
-        }
-      ],
-      "format": "cjs"
-    },
-    ".open-next/server-functions/default/.next/server/app/admin/page.js": {
-      "bytes": 1032,
       "imports": [
         {
           "path": ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js",
@@ -4029,7 +3808,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/require.js": {
-      "bytes": 8186,
+      "bytes": 5780,
       "imports": [
         {
           "path": "path",
@@ -4077,36 +3856,6 @@
           "external": true
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\products\\[id]\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\brands\\[id]\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/products/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\products\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/admin/brands/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\admin\\brands\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\orders\\[id]\\route.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/api/auth/login/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\auth\\login\\route.js"
-        },
-        {
           "path": ".open-next/server-functions/default/.next/server/app/admin/products/page.js",
           "kind": "require-call",
           "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\products\\page.js"
@@ -4115,11 +3864,6 @@
           "path": ".open-next/server-functions/default/.next/server/app/_global-error/page.js",
           "kind": "require-call",
           "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\_global-error\\page.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/products/[id]/page.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\products\\[id]\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/admin/brands/page.js",
@@ -4137,24 +3881,9 @@
           "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\login\\page.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/api/orders/route.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\orders\\route.js"
-        },
-        {
           "path": ".open-next/server-functions/default/.next/server/app/_not-found/page.js",
           "kind": "require-call",
           "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\_not-found\\page.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/products/page.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\products\\page.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/app/admin/page.js",
-          "kind": "require-call",
-          "original": "C:\\Users\\ytusu\\Downloads\\sarinashoe\\.open-next\\server-functions\\default\\.next\\server\\app\\admin\\page.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/page.js",
@@ -5742,7 +5471,7 @@
       "format": "esm"
     },
     ".open-next/server-functions/default/index.mjs": {
-      "bytes": 88897,
+      "bytes": 109016,
       "imports": [
         {
           "path": "node:module",
@@ -5928,21 +5657,6 @@
         },
         {
           "path": "vm",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "worker_threads",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "path",
-          "kind": "require-call",
-          "external": true
-        },
-        {
-          "path": "url",
           "kind": "require-call",
           "external": true
         },
@@ -6922,92 +6636,38 @@
         ".open-next/server-functions/default/node_modules/next/dist/shared/lib/deep-freeze.js": {
           "bytesInOutput": 586
         },
-        ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route_client-reference-manifest.js": {
-          "bytesInOutput": 487
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route_client-reference-manifest.js": {
-          "bytesInOutput": 484
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/products/route_client-reference-manifest.js": {
-          "bytesInOutput": 478
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/brands/route_client-reference-manifest.js": {
-          "bytesInOutput": 474
-        },
-        ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route_client-reference-manifest.js": {
-          "bytesInOutput": 472
-        },
-        ".open-next/server-functions/default/.next/server/app/api/auth/login/route_client-reference-manifest.js": {
-          "bytesInOutput": 470
-        },
-        ".open-next/server-functions/default/.next/server/app/api/orders/route_client-reference-manifest.js": {
-          "bytesInOutput": 462
-        },
         ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-          "bytesInOutput": 75993
+          "bytesInOutput": 78103
         },
         ".open-next/cloudflare-templates/shims/throw.js": {
           "bytesInOutput": 215
         },
-        ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js": {
-          "bytesInOutput": 16705
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/products/[id]/route.js": {
-          "bytesInOutput": 517
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/brands/[id]/route.js": {
-          "bytesInOutput": 514
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/products/route.js": {
-          "bytesInOutput": 503
-        },
-        ".open-next/server-functions/default/.next/server/app/api/admin/brands/route.js": {
-          "bytesInOutput": 499
-        },
-        ".open-next/server-functions/default/.next/server/app/api/orders/[id]/route.js": {
-          "bytesInOutput": 496
-        },
-        ".open-next/server-functions/default/.next/server/app/api/auth/login/route.js": {
-          "bytesInOutput": 458
-        },
         ".open-next/server-functions/default/.next/server/chunks/ssr/[turbopack]_runtime.js": {
-          "bytesInOutput": 16720
+          "bytesInOutput": 16719
         },
         ".open-next/server-functions/default/.next/server/app/admin/products/page.js": {
-          "bytesInOutput": 1089
+          "bytesInOutput": 1088
         },
         ".open-next/server-functions/default/.next/server/app/_global-error/page.js": {
-          "bytesInOutput": 710
-        },
-        ".open-next/server-functions/default/.next/server/app/products/[id]/page.js": {
-          "bytesInOutput": 1102
+          "bytesInOutput": 709
         },
         ".open-next/server-functions/default/.next/server/app/admin/brands/page.js": {
-          "bytesInOutput": 1084
+          "bytesInOutput": 1083
         },
         ".open-next/server-functions/default/.next/server/app/admin/orders/page.js": {
-          "bytesInOutput": 1084
+          "bytesInOutput": 1083
         },
         ".open-next/server-functions/default/.next/server/app/admin/login/page.js": {
-          "bytesInOutput": 1081
-        },
-        ".open-next/server-functions/default/.next/server/app/api/orders/route.js": {
-          "bytesInOutput": 481
+          "bytesInOutput": 1080
         },
         ".open-next/server-functions/default/.next/server/app/_not-found/page.js": {
-          "bytesInOutput": 917
-        },
-        ".open-next/server-functions/default/.next/server/app/products/page.js": {
-          "bytesInOutput": 1048
-        },
-        ".open-next/server-functions/default/.next/server/app/admin/page.js": {
-          "bytesInOutput": 1141
+          "bytesInOutput": 916
         },
         ".open-next/server-functions/default/.next/server/app/page.js": {
-          "bytesInOutput": 1022
+          "bytesInOutput": 1020
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/require.js": {
-          "bytesInOutput": 4389
+          "bytesInOutput": 3422
         },
         ".open-next/server-functions/default/node_modules/next/dist/lib/interop-default.js": {
           "bytesInOutput": 363
@@ -7214,10 +6874,10 @@
           "bytesInOutput": 5074
         },
         ".open-next/server-functions/default/index.mjs": {
-          "bytesInOutput": 62183
+          "bytesInOutput": 81290
         }
       },
-      "bytes": 2082285
+      "bytes": 2075735
     }
   }
 }

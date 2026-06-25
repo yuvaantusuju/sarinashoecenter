@@ -27,7 +27,7 @@ export default async function AdminDashboardPage() {
   let productCount = 0;
 
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     if (env?.DB) {
       const db = getDb(env.DB);
       orderList = await db.select().from(orders);

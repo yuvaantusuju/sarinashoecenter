@@ -40,7 +40,7 @@ export async function PUT(
       return NextResponse.json({ error: "Price must be a valid number of paise" }, { status: 400 });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     const colorsStr = typeof colors === "string" ? colors : JSON.stringify(colors || []);
     const imageUrlsStr = typeof imageUrls === "string" ? imageUrls : JSON.stringify(imageUrls || []);
@@ -79,7 +79,7 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       return NextResponse.json({ success: true, message: "Mock product deleted" });

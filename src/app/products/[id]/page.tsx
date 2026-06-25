@@ -171,7 +171,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   // 2. Fetch from Cloudflare D1
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     if (env?.DB) {
       const db = getDb(env.DB);
       const results = await db

@@ -22,7 +22,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Invalid status value" }, { status: 400 });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       console.warn("No DB binding, mock updating order status in dev mode.");

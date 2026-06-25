@@ -9,9 +9,9 @@
 	// Cloudflare D1 database binding
 	"d1_databases": [
 		{
-			"binding": "sarinashoe_db",
-			"database_name": "sarinashoe-db",
-			"database_id": "fcb92c05-aa67-40db-a325-431060f9e650",
+			"binding": "DB",
+			"database_name": "sarina",
+			"database_id": "633be768-59d4-4147-b214-35a10c65ae09",
 			"remote": true
 		}
 	]

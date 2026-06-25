@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     if (!(env as any)?.DB) {
       return NextResponse.json(
         { error: "Database not available." },

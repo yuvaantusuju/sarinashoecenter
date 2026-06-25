@@ -14,7 +14,7 @@ export const runtime = 'edge';
 
 export async function GET() {
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       // Return demo brands in development fallback
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Brand name is required" }, { status: 400 });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
     const newBrandId = `orange-${generateId().slice(0, 8)}`;
 
     if (!env?.DB) {

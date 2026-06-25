@@ -23,7 +23,7 @@ export async function PUT(
       return NextResponse.json({ error: "Brand name is required" }, { status: 400 });
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       return NextResponse.json({ success: true, message: "Mock brand updated" });
@@ -52,7 +52,7 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       return NextResponse.json({ success: true, message: "Mock brand deleted" });

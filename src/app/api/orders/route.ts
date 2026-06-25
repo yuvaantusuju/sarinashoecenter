@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     // 2. Local fallback if D1 database is not bound
     if (!env?.DB) {
@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
-    const { env } = getCloudflareContext();
+    const { env } = await getCloudflareContext({ async: true });
 
     if (!env?.DB) {
       // Mock orders list for admin dashboard local dev
