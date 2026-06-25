@@ -9,7 +9,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/db";
 import { brands } from "@/db/schema";
 
-export const runtime = 'edge';
+
 
 export async function PUT(
   req: NextRequest,

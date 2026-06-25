@@ -10,7 +10,7 @@ import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { verifySessionToken, AUTH_COOKIE_NAME } from "@/lib/auth";
 
-export const runtime = "edge";
+
 
 export async function GET(req: NextRequest) {
   try {
